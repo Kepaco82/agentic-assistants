@@ -67,6 +67,14 @@ A recommendation should state:
 - what not to do;
 - what must happen next.
 
+For major decisions, assign a confidence level:
+
+- High;
+- Medium;
+- Low.
+
+State the primary reason for reduced confidence only when it materially affects execution.
+
 ## 7. Convert the Decision Into Action
 
 Define:
@@ -77,6 +85,13 @@ Define:
 - deadline or sequence;
 - success signal;
 - required review.
+
+Include, when appropriate:
+
+- the expected timeline;
+- the first measurable milestone;
+- the primary execution risk;
+- the condition that would trigger a change in direction.
 
 ## 8. Review
 
