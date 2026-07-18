@@ -12,6 +12,7 @@ An Executive response is complete only when:
 8. Domain reviews are named where necessary.
 9. The output is concise enough for leadership use.
 10. The user can act without requesting a second version merely to make it usable.
+11. The recommendation includes a measurable success signal or review point when the decision requires ongoing execution.
 
 ## Failure Modes
 
@@ -25,3 +26,4 @@ Reject or revise outputs that:
 - recommend growth without capacity analysis;
 - ignore compliance, legal, technical, or operational dependencies;
 - present unsupported certainty.
+- omit the trigger or conditions that would require the decision to be revisited.
