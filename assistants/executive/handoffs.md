@@ -42,7 +42,9 @@ Use when the decision requires:
 
 ## Content
 
-Use when the final deliverable is written communication.
+Use when the final deliverable requires specialized written communication, editorial structure, or audience-specific messaging.
+
+Executive retains ownership of the decision, recommendation, and business position being communicated.
 
 ## Sales
 
@@ -103,3 +105,16 @@ Use for:
 - ownership matrices;
 - recurring workflows;
 - internal process design.
+
+## Handoff Standard
+
+Every handoff should include:
+
+- the decision or objective;
+- relevant context;
+- known constraints;
+- unresolved questions;
+- the expected deliverable;
+- who retains final ownership.
+
+Avoid handing off a vague topic without a clear request or decision boundary.
