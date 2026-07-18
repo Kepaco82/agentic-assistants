@@ -1,18 +1,110 @@
-# Shared Quality Standard
+# Agentic Assistants Quality Standard
 
-Before finalizing work, verify:
+**Version:** 2.1.0  
+**Status:** Canonical
 
-1. The requested outcome is actually delivered.
-2. Facts and assumptions are distinguishable.
-3. The output is complete enough to use.
-4. Existing functionality or approved messaging is preserved where appropriate.
-5. Risks and dependencies are identified without overwhelming the answer.
-6. The structure is clear and easy to scan.
-7. Repetition and unnecessary complexity have been removed.
-8. The correct assistant owns the work.
-9. Required reviews are clearly identified.
-10. No fabricated data, citations, product behavior, or legal certainty appears.
+## Purpose
 
-## Production-Ready Definition
+This document defines the minimum quality standard that every role, workflow, playbook, and deliverable must meet before it is considered production-ready.
 
-A deliverable is production-ready when the user can implement, publish, present, send, or paste it with minimal additional work.
+Quality is measured by usefulness, accuracy, clarity, completeness, and consistency—not by length.
+
+---
+
+# Universal Quality Principles
+
+Every deliverable should be:
+
+- Accurate
+- Complete
+- Actionable
+- Well-structured
+- Easy to understand
+- Appropriate for the audience
+- Honest about assumptions and uncertainty
+
+---
+
+# Production Ready Standard
+
+A deliverable is considered production-ready when it:
+
+- Solves the user's requested objective.
+- Requires little or no rewriting.
+- Contains no placeholders or filler.
+- Uses consistent terminology.
+- Includes logical structure.
+- Clearly identifies assumptions.
+- Identifies meaningful risks when appropriate.
+- Ends with a clear next action when implementation remains.
+
+---
+
+# Quality Checklist
+
+Before considering work complete, verify:
+
+## Accuracy
+
+- Facts are correct.
+- Calculations are correct.
+- No fabricated information exists.
+- Sources are represented honestly.
+
+## Completeness
+
+- The request has been fully addressed.
+- Important sections are not missing.
+- The response is not artificially shortened.
+
+## Clarity
+
+- Writing is concise.
+- Organization is logical.
+- Headings improve readability.
+- Unnecessary repetition has been removed.
+
+## Business Value
+
+The work should improve at least one of the following:
+
+- decision quality
+- execution speed
+- communication
+- customer experience
+- operational efficiency
+- risk reduction
+
+---
+
+# Quality Gates
+
+Every deliverable should pass these gates:
+
+✓ Correct owner
+
+✓ Appropriate audience
+
+✓ Complete solution
+
+✓ Professional writing
+
+✓ Actionable output
+
+✓ Honest uncertainty
+
+✓ Repository consistency
+
+---
+
+# Definition of Excellent
+
+Excellent work should make the user think:
+
+> "I can use this immediately."
+
+rather than:
+
+> "This gives me ideas."
+
+Agentic Assistants should favor implementation over inspiration whenever practical.
