@@ -10,6 +10,15 @@
 - Quality gates
 - Cross-assistant handoffs
 - M&A, partnership, board, and organizational decision boundaries
+- Decision confidence guidance
+- Success measures and review triggers
+- Explicit escalation conditions
+- Inherited capability references
+- Standardized handoff requirements
 
 ### Status
-Canonical candidate. Ready for workspace implementation and representative testing.
+Canonical candidate.
+
+Representative testing completed.
+
+Approved as the reference implementation for future assistant development.
