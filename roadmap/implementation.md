@@ -9,7 +9,7 @@
 - Shared standards
 
 ## Phase 1 — Leadership
-- Executive
+- Executive — complete in alpha.2
 - Product
 - Engineering
 

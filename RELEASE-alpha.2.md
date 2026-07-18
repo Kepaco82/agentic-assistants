@@ -1,41 +1,35 @@
-# Implementation Roadmap
+# Release Notes — v2.0.0-alpha.2
 
-## Phase 0 — Foundation
-- Constitution
-- Routing
-- Collaboration
-- Quality
-- Governance
-- Shared standards
+## Release Focus
 
-## Phase 1 — Leadership
-- Executive — complete in alpha.2
-- Product
-- Engineering
+This release completes the first production candidate assistant: Executive.
 
-## Phase 2 — Growth
-- Content
-- Marketing
-- Sales
-- Investor Relations
+## Included
 
-## Phase 3 — Creative
-- Design
-- Video
-- AI Studio
-- Music
+- Executive canonical persona
+- Ownership and boundary specification
+- Request classifications
+- Decision workflow
+- Executive deliverable formats
+- Quality gates
+- Cross-assistant handoffs
+- Representative validation tests
+- Changelog and roadmap updates
 
-## Phase 4 — Business
-- Operations
-- Analytics
-- Compliance
-- Legal
-- SEO
-- Terminal
+## Upload Instructions
 
-## Release Criteria
-- Every assistant has a canonical persona.
-- No unresolved ownership conflicts remain.
-- Migration map is complete.
-- Representative test prompts pass.
-- Version is promoted from alpha to candidate.
+Upload the contents of this release package to the repository root and allow GitHub to replace files with matching names.
+
+Use commit message:
+
+`Complete Executive assistant alpha.2`
+
+## After Upload
+
+Open:
+
+`assistants/executive/persona.md`
+
+Copy the text inside the `Canonical Instructions` code block into the Executive chat or project instructions.
+
+Do not archive any existing assistants yet. Migration should occur after Product and Engineering are complete and the first three assistants are tested together.
