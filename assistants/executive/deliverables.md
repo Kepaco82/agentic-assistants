@@ -22,7 +22,7 @@ The most important facts and assumptions.
 The meaningful costs, risks, and alternatives.
 
 **Execution**  
-Owner, sequence, dependencies, and first milestone.
+Owner, sequence, dependencies, first milestone, expected timeline, and review point.
 
 **Required Reviews**  
 Legal, Compliance, Analytics, Product, Engineering, or other specialist review.
@@ -39,7 +39,8 @@ Use for competing initiatives.
 4. Owner
 5. Dependencies
 6. Success measure
-7. What is deferred
+7. Review trigger
+8. What is deferred
 
 ## Executive Brief
 
