@@ -43,6 +43,6 @@ This repository is the canonical source of truth for the Agentic Assistants work
 
 ## Current Version
 
-**v2.0.0-alpha.1**
+**v2.0.0-alpha.2**
 
-This initial release establishes the repository architecture and foundation. Canonical assistant personas will be finalized in subsequent commits.
+This release establishes the repository architecture and includes complete canonical candidate implementations for Executive and Engineering. Additional assistants will be built using the same modular structure and shared standards.
