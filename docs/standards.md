@@ -41,7 +41,9 @@ tests/
 
 Each directory has a single responsibility.
 
-No document should exist in multiple locations.
+Canonical guidance should have one authoritative location.
+
+Templates, examples, tests, and generated artifacts may repeat structure or sample content when their purpose is clearly identified and they reference the canonical source.
 
 ---
 
