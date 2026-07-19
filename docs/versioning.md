@@ -34,6 +34,34 @@ Example:
 ```
 
 ---
+# Pre-release Versions
+
+Use pre-release identifiers when the repository or a major component is not yet ready to be treated as stable.
+
+Approved pre-release stages are:
+
+- **alpha** – architecture, behavior, or structure is still changing materially;
+- **beta** – the architecture is substantially complete and undergoing validation;
+- **release candidate** – the release is believed to be stable and is awaiting final approval.
+
+Format pre-release versions as:
+
+```text
+MAJOR.MINOR.PATCH-alpha.N
+MAJOR.MINOR.PATCH-beta.N
+MAJOR.MINOR.PATCH-rc.N
+
+2.0.0-alpha.2
+2.0.0-beta.1
+2.0.0-rc.1
+
+
+This is important because the repository already uses versions such as `2.0.0-alpha.2`, but the current standard does not define alpha, beta, or release-candidate behavior.
+
+Save and commit with:
+
+```text
+Define pre-release versioning
 
 ## Major Version (X.0.0)
 

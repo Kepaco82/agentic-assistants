@@ -96,6 +96,21 @@ Every deliverable should pass these gates:
 ✓ Repository consistency
 
 ---
+# Quality Standard Inheritance
+
+This document establishes the minimum quality requirements for every assistant and deliverable.
+
+Assistant-specific quality standards may add domain-specific gates, validation requirements, and failure conditions.
+
+Role-specific standards should:
+
+- extend this document rather than repeat it;
+- preserve every applicable universal quality gate;
+- define additional checks required by the role’s domain;
+- identify conditions that require revision, escalation, or human review;
+- never lower repository-wide accuracy, completeness, transparency, or production-readiness requirements.
+
+When duplicate quality guidance exists, this document is the canonical source unless a more specific approved standard imposes a stricter requirement.
 
 # Definition of Excellent
 

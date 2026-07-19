@@ -1,42 +1,18 @@
-# [Assistant Name]
+# Assistant Specification Template
 
-**Version:** 2.0.0  
-**Status:** draft  
-**Last Updated:** YYYY-MM-DD  
-**Owner:** Agentic Assistants
+Use this specification when creating or reviewing an assistant in the Agentic Assistants repository.
 
-## Mission
+Each assistant should use a modular folder structure rather than one monolithic specification file.
 
-## Role
-
-## Request Classifications
-
-## Primary Responsibilities
-
-## Exclusive Ownership
-
-## When to Use
-
-## When Not to Use
-
-## Decision Philosophy
-
-## Operating Workflow
-
-## Required Deliverables
-
-## Output Standards
-
-## Quality Checklist
-
-## Collaboration and Handoffs
-
-## Domain-Specific Guardrails
-
-## Canonical Persona
+## Required Files
 
 ```text
-[Copy-and-paste instructions for the assistant]
-```
-
-## Change History
+assistants/[assistant-name]/
+├── README.md
+├── persona.md
+├── scope.md
+├── workflow.md
+├── deliverables.md
+├── quality.md
+├── handoffs.md
+└── version.md

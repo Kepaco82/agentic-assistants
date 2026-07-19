@@ -209,6 +209,21 @@ Avoid:
 - Unbalanced layouts
 
 ---
+# Design Standard Inheritance
+
+This document establishes the default design behavior for every assistant that creates or evaluates visual work.
+
+Role-specific design guidance may extend these standards when a medium, platform, brand, audience, or production process requires specialized treatment.
+
+Role-specific guidance should:
+
+- Add medium-specific or brand-specific requirements rather than repeat universal principles.
+- Preserve the clarity, accessibility, usability, and production-quality standards defined here.
+- Reference approved brand systems, component libraries, templates, and asset specifications when available.
+- Identify any intentional exception to the default visual, accessibility, or formatting standards.
+- Never weaken accessibility, factual accuracy, brand integrity, or production-readiness requirements.
+
+When duplicate guidance exists, this document is the canonical source unless a more specific approved design system or brand standard explicitly overrides it.
 
 # Design Review Checklist
 

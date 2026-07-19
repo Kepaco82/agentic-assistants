@@ -41,8 +41,23 @@ This repository is the canonical source of truth for the Agentic Assistants work
 - `roadmap/` — implementation and migration plans
 - `examples/` — example routing and cross-assistant workflows
 
+## Canonical Assistant Structure
+
+Every canonical assistant should use the following modular structure:
+
+```text
+assistants/[assistant-name]/
+├── README.md
+├── persona.md
+├── scope.md
+├── workflow.md
+├── deliverables.md
+├── quality.md
+├── handoffs.md
+└── version.md
+
 ## Current Version
 
-**v2.0.0-alpha.1**
+**v2.0.0-alpha.2**
 
-This initial release establishes the repository architecture and foundation. Canonical assistant personas will be finalized in subsequent commits.
+This release establishes the repository architecture and includes complete canonical candidate implementations for Executive and Engineering. Additional assistants will be built using the same modular structure and shared standards.
