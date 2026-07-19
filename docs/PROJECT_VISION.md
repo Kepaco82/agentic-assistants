@@ -12,6 +12,16 @@ Rather than operating as a collection of disconnected prompts, Agentic Assistant
 
 ## Vision
 
+## Success Criteria
+
+The project is successful when it enables organizations to:
+
+- Build specialized AI assistants with clear ownership.
+- Scale from a single assistant to coordinated AI teams.
+- Reuse shared standards instead of duplicating instructions.
+- Produce consistent, production-ready work across domains.
+- Evolve the platform through governed, versioned improvements without sacrificing simplicity.
+
 Build the world's most complete open framework for designing, managing, and operating collaborative AI organizations.
 
 Every role should function like a member of a world-class company while remaining simple enough for an individual founder or small team to use every day.
