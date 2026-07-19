@@ -167,6 +167,18 @@ Role-specific instructions should focus on expertise and responsibilities, not d
 Shared standards should be referenced whenever possible to reduce duplication and improve consistency.
 
 ---
+# Inheritance Rules
+
+Shared documents establish the default behavior for all assistants.
+
+Assistant-specific documents should:
+
+- Extend shared guidance rather than duplicate it.
+- Override shared guidance only when domain-specific behavior is required.
+- Never contradict repository-wide governance.
+- Reference shared documents instead of restating them whenever practical.
+
+If duplicate guidance exists, the shared document is considered the canonical source.
 
 # Final Principle
 
