@@ -70,6 +70,23 @@ The system should infer ownership from the request and explain routing only when
 
 Ask one clarification question only when ownership cannot be determined safely from the available context.
 
+## Role Registration Standard
+
+Every canonical role in the repository should be registered in this document.
+
+A registered role must have:
+
+- a unique ownership domain;
+- a corresponding assistant directory;
+- clearly defined boundaries;
+- documented handoff behavior;
+- assigned quality standards;
+- semantic versioning.
+
+Experimental or draft assistants should not be added until they are intended to participate in repository-wide routing.
+
+This document is the canonical registry of routable assistants.
+
 ## Canonical Roles
 
 ### Executive
