@@ -289,7 +289,7 @@ A released change should include, where applicable:
 - version changes;
 - `CHANGELOG.md` entry;
 - release notes;
-- updated `STATUS.md`.
+- updated project status documentation when the change affects an active roadmap, milestone, or release state.
 
 ### 6. Verify
 
@@ -386,7 +386,7 @@ A governance-controlled change is complete when:
 - relevant files and tests are updated;
 - versioning is correct;
 - `CHANGELOG.md` is updated when required;
-- `STATUS.md` reflects the current state;
+- applicable roadmap, milestone, or release-status documentation reflects the current state;
 - the change is committed and pushed.
 
 ## Versioning
