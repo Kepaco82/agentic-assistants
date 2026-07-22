@@ -1,34 +1,28 @@
-from pathlib import Path
-
-
-def format_name(folder_name: str) -> str:
-    return folder_name.replace("-", " ").title()
+from assistant_registry import list_assistants
 
 
 def main():
-    assistants_path = Path("assistants")
-
-    if not assistants_path.exists():
-        print("Error: assistants directory not found.")
-        raise SystemExit(1)
-
-    assistant_names = sorted(
-        path.name
-        for path in assistants_path.iterdir()
-        if path.is_dir()
-    )
+    assistants = list_assistants()
 
     print("Available Assistants")
     print("====================")
 
-    if not assistant_names:
-        print("No assistants found.")
+    if not assistants:
+        print("No assistants with metadata found.")
         return
 
-    for assistant_name in assistant_names:
-        print(f"- {format_name(assistant_name)}")
+    for assistant in assistants:
+        name = assistant.get("name", "Unknown")
+        category = assistant.get("category", "Unknown")
+        version = assistant.get("version", "Unknown")
+        status = assistant.get("status", "Unknown")
 
-    print(f"\nTotal: {len(assistant_names)}")
+        print(f"- {name}")
+        print(f"  Category: {category}")
+        print(f"  Version: {version}")
+        print(f"  Status: {status}")
+
+    print(f"\nTotal: {len(assistants)}")
 
 
 if __name__ == "__main__":
