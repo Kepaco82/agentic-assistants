@@ -65,6 +65,8 @@ assistants/[assistant-name]/
 ├── quality.md
 ├── handoffs.md
 └── version.md
+```
+
 
 ## Current Version
 
