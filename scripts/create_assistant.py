@@ -22,7 +22,11 @@ def main():
     assistant_name = sys.argv[1]
     assistant_path = Path("assistants") / assistant_name
 
-    assistant_path.mkdir(parents=True, exist_ok=True)
+    if assistant_path.exists():
+        print(f"Error: Assistant '{assistant_name}' already exists.")
+        sys.exit(1)
+
+    assistant_path.mkdir(parents=True)
 
     for filename in REQUIRED_FILES:
         file_path = assistant_path / filename
