@@ -41,6 +41,16 @@ This repository is the canonical source of truth for the Agentic Assistants work
 - `roadmap/` — implementation and migration plans
 - `examples/` — example routing and cross-assistant workflows
 
+## Validation
+
+Assistant behavior is evaluated using the repository-wide validation framework.
+
+Start with:
+
+- [Validation Overview](validation/README.md)
+- [Validation Guide](validation/guide.md)
+- [Scoring Rubric](validation/rubric.md)
+
 ## Canonical Assistant Structure
 
 Every canonical assistant should use the following modular structure:
