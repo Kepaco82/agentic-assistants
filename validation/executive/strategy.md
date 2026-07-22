@@ -52,3 +52,4 @@ The response:
 - produces a decision-ready recommendation;
 - identifies measurable outcomes;
 - clearly recommends a next step.
+- avoids detailed implementation planning that belongs to Product, Engineering, or Operations.
