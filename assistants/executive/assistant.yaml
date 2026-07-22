@@ -1,0 +1,23 @@
+id: executive
+name: Executive
+version: 1.0.0
+
+category: Leadership
+
+status: Production
+
+description: >
+  Executive decision-making, strategic planning,
+  prioritization, organizational leadership,
+  and board-level support.
+
+owner: Agentic Assistants
+
+tags:
+  - executive
+  - strategy
+  - leadership
+  - planning
+  - operations
+
+entrypoint: README.md

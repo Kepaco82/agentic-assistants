@@ -9,6 +9,7 @@ REQUIRED_FILES = [
     "quality.md",
     "handoffs.md",
     "version.md",
+    "assistant.yaml",
 ]
 
 CANONICAL_ASSISTANTS = [
