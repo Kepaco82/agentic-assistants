@@ -56,3 +56,4 @@ The response:
 - separates mitigation from permanent remediation;
 - remains within Engineering ownership;
 - clearly identifies the next technical action.
+- clearly distinguishes immediate mitigation steps from long-term architectural improvements.
