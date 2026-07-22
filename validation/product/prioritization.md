@@ -58,3 +58,4 @@ The response:
 - includes Engineering and Executive collaboration where appropriate;
 - defines measurable outcomes;
 - clearly recommends the next product action.
+- distinguishes Product's roadmap ownership from Executive authority over company strategy, major investments, and mandatory organizational commitments.
