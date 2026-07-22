@@ -44,6 +44,15 @@ def main():
         help="Assistant folder name, such as customer-success.",
     )
 
+    show_parser = subparsers.add_parser(
+        "show",
+        help="Show metadata for one assistant.",
+    )
+    show_parser.add_argument(
+        "name",
+        help="Assistant folder name, such as executive.",
+    )
+
     args = parser.parse_args()
 
     if args.command == "list":
@@ -55,6 +64,11 @@ def main():
     if args.command == "create":
         raise SystemExit(
             run_script("create_assistant.py", [args.name])
+        )
+
+    if args.command == "show":
+        raise SystemExit(
+            run_script("show_assistant.py", [args.name])
         )
 
     parser.print_help()
