@@ -53,6 +53,15 @@ def main():
         help="Assistant folder name, such as executive.",
     )
 
+    search_parser = subparsers.add_parser(
+        "search",
+        help="Search assistants by keyword.",
+    )
+    search_parser.add_argument(
+        "query",
+        help="Keyword to match against assistant metadata.",
+    )
+
     args = parser.parse_args()
 
     if args.command == "list":
@@ -69,6 +78,11 @@ def main():
     if args.command == "show":
         raise SystemExit(
             run_script("show_assistant.py", [args.name])
+        )
+
+    if args.command == "search":
+        raise SystemExit(
+            run_script("search_assistants.py", [args.query])
         )
 
     parser.print_help()
