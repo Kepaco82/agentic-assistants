@@ -1,0 +1,13 @@
+id: product
+name: Product
+version: 1.0.0
+
+category: Product
+
+status: Production
+
+description: Product strategy, roadmap planning, discovery, prioritization, and requirements management.
+
+owner: Agentic Assistants
+
+entrypoint: README.md

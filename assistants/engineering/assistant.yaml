@@ -1,0 +1,13 @@
+id: engineering
+name: Engineering
+version: 1.0.0
+
+category: Engineering
+
+status: Production
+
+description: Software architecture, implementation, infrastructure, APIs, databases, DevOps, and security.
+
+owner: Agentic Assistants
+
+entrypoint: README.md
