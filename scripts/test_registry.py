@@ -1,4 +1,4 @@
-from assistant_registry import list_assistants, load_assistant
+from scripts.assistant_registry import list_assistants, load_assistant
 
 
 def main():
