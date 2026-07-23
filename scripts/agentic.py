@@ -71,6 +71,15 @@ def main():
         help="Assistant folder name, such as executive.",
     )
 
+    export_parser = subparsers.add_parser(
+        "export",
+        help="Export an assistant prompt to the build folder.",
+    )
+    export_parser.add_argument(
+        "name",
+        help="Assistant folder name, such as executive.",
+    )
+
     args = parser.parse_args()
 
     if args.command == "list":
@@ -101,6 +110,11 @@ def main():
     if args.command == "run":
         raise SystemExit(
             run_script("run_assistant.py", [args.name])
+        )
+
+    if args.command == "export":
+        raise SystemExit(
+            run_script("export_assistant.py", [args.name])
         )
 
     parser.print_help()
