@@ -62,13 +62,26 @@ def main():
         help="Keyword to match against assistant metadata.",
     )
 
+    run_parser = subparsers.add_parser(
+        "run",
+        help="Assemble an assistant into one complete prompt.",
+    )
+    run_parser.add_argument(
+        "name",
+        help="Assistant folder name, such as executive.",
+    )
+
     args = parser.parse_args()
 
     if args.command == "list":
-        raise SystemExit(run_script("list_assistants.py"))
+        raise SystemExit(
+            run_script("list_assistants.py")
+        )
 
     if args.command == "validate":
-        raise SystemExit(run_script("validate.py"))
+        raise SystemExit(
+            run_script("validate.py")
+        )
 
     if args.command == "create":
         raise SystemExit(
@@ -83,6 +96,11 @@ def main():
     if args.command == "search":
         raise SystemExit(
             run_script("search_assistants.py", [args.query])
+        )
+
+    if args.command == "run":
+        raise SystemExit(
+            run_script("run_assistant.py", [args.name])
         )
 
     parser.print_help()
