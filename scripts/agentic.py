@@ -3,6 +3,7 @@ import subprocess
 import sys
 from pathlib import Path
 
+from scripts.generate_docs import main as generate_docs
 
 SCRIPTS_DIR = Path(__file__).parent
 
@@ -33,6 +34,11 @@ def main():
     subparsers.add_parser(
         "validate",
         help="Validate canonical assistants.",
+    )
+
+    subparsers.add_parser(
+        "docs",
+        help="Generate Markdown documentation for all assistants.",
     )
 
     create_parser = subparsers.add_parser(
@@ -91,6 +97,10 @@ def main():
         raise SystemExit(
             run_script("validate.py")
         )
+
+    if args.command == "docs":
+        generate_docs()
+        return
 
     if args.command == "create":
         raise SystemExit(
