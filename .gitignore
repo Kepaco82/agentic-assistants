@@ -46,3 +46,5 @@ coverage/
 # Generated exports
 exports/
 *.zip
+
+*.egg-info/
