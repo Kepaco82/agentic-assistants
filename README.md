@@ -1,75 +1,61 @@
 # Agentic Assistants
 
-A modular operating framework for specialized AI assistants with clear ownership, shared standards, collaboration rules, and versioned canonical personas.
+Agentic Assistants is a modular framework for creating, validating, documenting, assembling, and managing reusable AI assistants through a consistent file structure and command-line interface.
 
-## Purpose
+The project is designed to help teams move beyond isolated prompts by treating assistants as structured, versioned, testable software assets.
 
-This repository is the canonical source of truth for the Agentic Assistants workspace. It is designed to:
+## Why This Project Exists
 
-- eliminate redundant assistant personas;
-- define clear ownership and routing;
-- maintain shared company, brand, and quality standards;
-- keep assistant instructions modular and version controlled;
-- make future assistants easier to create and govern.
+AI assistants are often stored as long prompt documents with inconsistent structures, unclear ownership, duplicated instructions, and no reliable validation process.
 
-## Assistant Directory
+Agentic Assistants provides a standardized framework for defining assistants using:
 
-1. Executive
-2. Product
-3. Engineering
-4. Design
-5. Video
-6. Content
-7. Marketing
-8. Sales
-9. Investor Relations
-10. Compliance
-11. Legal
-12. Operations
-13. Analytics
-14. SEO
-15. AI Studio
-16. Music
-17. Terminal
+- Structured metadata
+- Modular prompt files
+- Validation rules
+- A central assistant registry
+- Command-line tooling
+- Automated documentation
+- Automated testing
+- Continuous integration
 
-## Repository Structure
+This makes assistants easier to create, review, maintain, reuse, and eventually compose into larger workflows.
 
-- `docs/` — constitution, governance, routing, collaboration, quality, and versioning
-- `shared/` — company context, brand standards, writing standards, and common knowledge
-- `assistants/` — canonical persona specifications
-- `templates/` — reusable templates for new assistants and changes
-- `roadmap/` — implementation and migration plans
-- `examples/` — example routing and cross-assistant workflows
+## Core Features
 
-## Validation
+- Metadata-driven assistant definitions
+- Standardized assistant folder structure
+- Central assistant registry
+- Assistant validation
+- Assistant creation from templates
+- Assistant search and discovery
+- Assistant metadata inspection
+- Prompt assembly
+- Prompt export
+- Markdown documentation generation
+- Installable command-line interface
+- Automated pytest coverage
+- GitHub Actions continuous integration
 
-Assistant behavior is evaluated using the repository-wide validation framework.
+## Current Assistants
 
-Start with:
+The repository currently includes canonical implementations for:
 
-- [Validation Overview](validation/README.md)
-- [Validation Guide](validation/guide.md)
-- [Scoring Rubric](validation/rubric.md)
+- Executive Assistant
+- Engineering Assistant
+- Product Assistant
 
-## Canonical Assistant Structure
+Each assistant follows the same modular architecture and shared quality standards.
 
-Every canonical assistant should use the following modular structure:
+## Installation
 
-```text
-assistants/[assistant-name]/
-├── README.md
-├── persona.md
-├── scope.md
-├── workflow.md
-├── deliverables.md
-├── quality.md
-├── handoffs.md
-└── version.md
-```
+### Requirements
 
+- Python 3.10 or newer
+- Git
 
-## Current Version
+### Clone the Repository
 
-**v2.0.0-alpha.2**
-
-This release establishes the repository architecture and includes complete canonical candidate implementations for Executive and Engineering. Additional assistants will be built using the same modular structure and shared standards.
+```bash
+git clone https://github.com/Kepaco82/agentic-assistants.git
+cd agentic-assistants
