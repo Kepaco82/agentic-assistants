@@ -1,10 +1,16 @@
 import subprocess
 import sys
+from pathlib import Path
+
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+CLI_PATH = PROJECT_ROOT / "scripts" / "agentic.py"
 
 
 def run_cli(*args: str) -> subprocess.CompletedProcess[str]:
     return subprocess.run(
-        [sys.executable, "scripts/agentic.py", *args],
+        [sys.executable, str(CLI_PATH), *args],
+        cwd=PROJECT_ROOT,
         capture_output=True,
         text=True,
     )
@@ -36,4 +42,14 @@ def test_export_command():
     result = run_cli("export", "executive")
 
     assert result.returncode == 0
-    assert "exported assistant" in result.stdout.lower()
+    assert (PROJECT_ROOT / "build" / "executive.md").exists()
+
+
+def test_docs_command():
+    result = run_cli("docs")
+
+    assert result.returncode == 0
+    assert "Generating assistant documentation" in result.stdout
+    assert (PROJECT_ROOT / "docs" / "assistants" / "executive.md").exists()
+    assert (PROJECT_ROOT / "docs" / "assistants" / "engineering.md").exists()
+    assert (PROJECT_ROOT / "docs" / "assistants" / "product.md").exists()
