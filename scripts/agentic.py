@@ -6,6 +6,8 @@ from pathlib import Path
 from scripts.generate_docs import main as generate_docs
 from scripts.assistant_router import route_request
 from scripts.assistant_orchestrator import orchestrate_request
+from scripts.assistant_executor import execute_request
+from scripts.llm_client import LLMClient
 
 SCRIPTS_DIR = Path(__file__).parent
 
@@ -88,6 +90,15 @@ def main():
         help="The request to analyze and plan.",
     )
 
+    execute_parser = subparsers.add_parser(
+        "execute",
+        help="Execute a request through an LLM assistant workflow.",
+    )
+    execute_parser.add_argument(
+        "request",
+        help="The request to execute.",
+    )
+
     run_parser = subparsers.add_parser(
         "run",
         help="Assemble an assistant into one complete prompt.",
@@ -166,7 +177,23 @@ def main():
             print(f"- {reason}")
 
         return
+    if args.command == "execute":
+        llm_client = LLMClient()
 
+        result = execute_request(
+            args.request,
+            llm_client=llm_client,
+        )
+
+        if result is None:
+            print("No matching assistants found.")
+            return
+
+        print(f"Workflow: {' -> '.join(result['workflow'])}")
+        print()
+        print(result["final_response"])
+        return
+        
     if args.command == "run":
         raise SystemExit(
             run_script("run_assistant.py", [args.name])
