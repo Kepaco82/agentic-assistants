@@ -1,3 +1,4 @@
+from copy import deepcopy
 from pathlib import Path
 from typing import Any
 
@@ -63,24 +64,52 @@ def resolve_assistant_chain(
     return resolved
 
 
+def merge_metadata(chain: list[str]) -> dict[str, Any]:
+    """
+    Merge metadata from parent assistants into the child assistant.
+
+    Rules:
+    - Parents are merged first.
+    - Child scalar values override parent scalar values.
+    - List values are combined without duplicates.
+    - Internal path values are not inherited.
+    """
+    merged: dict[str, Any] = {}
+
+    for current_id in chain:
+        metadata = load_assistant(current_id)
+
+        if not metadata:
+            raise ValueError(f"Assistant not found: {current_id}")
+
+        for key, value in metadata.items():
+            if key == "path":
+                continue
+
+            if isinstance(value, list):
+                existing = merged.get(key, [])
+
+                if not isinstance(existing, list):
+                    existing = []
+
+                merged[key] = list(dict.fromkeys(existing + deepcopy(value)))
+            else:
+                merged[key] = deepcopy(value)
+
+    child_metadata = load_assistant(chain[-1])
+
+    if child_metadata and "path" in child_metadata:
+        merged["path"] = child_metadata["path"]
+
+    return merged
+
+
 def load_resolved_assistant(assistant_id: str) -> dict[str, Any]:
     """
-    Load an assistant and resolve its inherited assistants.
-
-    Returns:
-        {
-            "id": str,
-            "metadata": dict,
-            "chain": list[str],
-            "sections": list[dict],
-        }
+    Load an assistant and resolve inherited metadata and prompt sections.
     """
     chain = resolve_assistant_chain(assistant_id)
-
-    metadata = load_assistant(assistant_id)
-
-    if not metadata:
-        raise ValueError(f"Assistant not found: {assistant_id}")
+    metadata = merge_metadata(chain)
 
     sections: list[dict[str, str]] = []
 
