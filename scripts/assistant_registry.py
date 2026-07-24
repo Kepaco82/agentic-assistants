@@ -77,7 +77,10 @@ def build_registry() -> dict[str, dict[str, Any]]:
     Each registry entry includes resolved metadata, inheritance chain,
     prompt sections, and the assistant path.
     """
-    from assistant_loader import load_resolved_assistant
+    try:
+        from .assistant_loader import load_resolved_assistant
+    except ImportError:
+        from assistant_loader import load_resolved_assistant
 
     registry: dict[str, dict[str, Any]] = {}
 

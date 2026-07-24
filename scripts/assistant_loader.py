@@ -2,7 +2,10 @@ from copy import deepcopy
 from pathlib import Path
 from typing import Any
 
-from assistant_registry import load_assistant
+try:
+    from .assistant_registry import load_assistant
+except ImportError:
+    from assistant_registry import load_assistant
 
 
 PROMPT_FILES = [
