@@ -68,3 +68,46 @@ def list_assistants() -> list[dict[str, Any]]:
             assistants.append(metadata)
 
     return assistants
+
+
+def build_registry() -> dict[str, dict[str, Any]]:
+    """
+    Build a central registry of all assistants.
+
+    Each registry entry includes resolved metadata, inheritance chain,
+    prompt sections, and the assistant path.
+    """
+    from assistant_loader import load_resolved_assistant
+
+    registry: dict[str, dict[str, Any]] = {}
+
+    for assistant in list_assistants():
+        assistant_id = assistant.get("id")
+
+        if not isinstance(assistant_id, str) or not assistant_id:
+            continue
+
+        resolved = load_resolved_assistant(assistant_id)
+
+        registry[assistant_id] = {
+            "id": assistant_id,
+            "metadata": resolved["metadata"],
+            "chain": resolved["chain"],
+            "sections": resolved["sections"],
+            "path": assistant.get("path"),
+        }
+
+    return registry
+
+
+def get_registry_entry(
+    assistant_id: str,
+    registry: dict[str, dict[str, Any]] | None = None,
+) -> dict[str, Any] | None:
+    """
+    Return one assistant from the central registry.
+    """
+    if registry is None:
+        registry = build_registry()
+
+    return registry.get(assistant_id)
