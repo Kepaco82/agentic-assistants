@@ -1,3 +1,4 @@
+from unittest.mock import patch
 from types import SimpleNamespace
 
 import pytest
@@ -78,8 +79,9 @@ def test_generate_returns_request_id():
 def test_missing_api_key_raises_clear_error(monkeypatch):
     monkeypatch.delenv("OPENAI_API_KEY", raising=False)
 
-    with pytest.raises(
-        ValueError,
-        match="OPENAI_API_KEY is not configured",
-    ):
-        LLMClient()
+    with patch("scripts.llm_client.load_dotenv"):
+        with pytest.raises(
+            ValueError,
+            match="OPENAI_API_KEY is not configured",
+        ):
+            LLMClient()
