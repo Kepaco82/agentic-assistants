@@ -5,6 +5,7 @@ from pathlib import Path
 
 from scripts.generate_docs import main as generate_docs
 from scripts.assistant_router import route_request
+from scripts.assistant_orchestrator import orchestrate_request
 
 SCRIPTS_DIR = Path(__file__).parent
 
@@ -78,6 +79,15 @@ def main():
         help="The request to classify and route.",
     )
 
+    plan_parser = subparsers.add_parser(
+        "plan",
+        help="Create an ordered multi-assistant execution plan.",
+    )
+    plan_parser.add_argument(
+        "request",
+        help="The request to analyze and plan.",
+    )
+
     run_parser = subparsers.add_parser(
         "run",
         help="Assemble an assistant into one complete prompt.",
@@ -137,6 +147,24 @@ def main():
         print(f"Assistant: {result['assistant_id']}")
         print(f"Score: {result['score']}")
         print(f"Matched terms: {', '.join(result['matched_terms'])}")
+        return
+
+    if args.command == "plan":
+        result = orchestrate_request(args.request)
+
+        if result is None:
+            print("No matching assistants found.")
+            return
+
+        print(f"Primary: {result['primary']}")
+        print(f"Secondary: {', '.join(result['secondary']) or 'None'}")
+        print(f"Workflow: {' -> '.join(result['workflow'])}")
+        print(f"Confidence: {result['confidence']}")
+
+        print("Reasoning:")
+        for reason in result["reasoning"]:
+            print(f"- {reason}")
+
         return
 
     if args.command == "run":
