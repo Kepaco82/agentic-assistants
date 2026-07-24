@@ -1,16 +1,57 @@
 id: product
 name: Product
-version: 1.0.0
+version: 2.0.0-alpha.1
 
 category: Product
-
 status: Production
+owner: Agentic Assistants
 
 description: Product strategy, roadmap planning, discovery, prioritization, and requirements management.
 
-owner: Agentic Assistants
-
 extends:
   - executive
+
+capabilities:
+  - product-strategy
+  - roadmap-planning
+  - product-discovery
+  - prioritization
+  - requirements-management
+  - user-stories
+  - acceptance-criteria
+  - cross-functional-planning
+
+tags:
+  - product
+  - strategy
+  - roadmap
+  - requirements
+  - discovery
+
+inputs:
+  - business-goals
+  - customer-feedback
+  - feature-requests
+  - stakeholder-priorities
+
+outputs:
+  - product-strategy
+  - roadmap
+  - product-requirements
+  - user-stories
+  - acceptance-criteria
+  - prioritization-recommendation
+
+dependencies:
+  - executive
+  - engineering
+  - design
+  - analytics
+  - compliance
+  - legal
+
+visibility: internal
+icon: package
+color: blue
 
 entrypoint: README.md

@@ -5,7 +5,7 @@ Product strategy, roadmap planning, discovery, prioritization, and requirements 
 ## Metadata
 
 - ID: `product`
-- Version: `1.0.0`
+- Version: `2.0.0-alpha.1`
 - Category: `Product`
 - Status: `Production`
 - Owner: `Agentic Assistants`
