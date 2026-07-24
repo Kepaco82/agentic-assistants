@@ -37,7 +37,9 @@ def resolve_assistant_chain(
 
     if assistant_id in active:
         cycle = " -> ".join(active + [assistant_id])
-        raise ValueError(f"Circular assistant inheritance detected: {cycle}")
+        raise ValueError(
+            f"Circular assistant inheritance detected: {cycle}"
+        )
 
     if assistant_id in resolved:
         return resolved
@@ -45,7 +47,9 @@ def resolve_assistant_chain(
     assistant = load_assistant(assistant_id)
 
     if not assistant:
-        raise ValueError(f"Assistant not found: {assistant_id}")
+        raise ValueError(
+            f"Assistant not found: {assistant_id}"
+        )
 
     active.append(assistant_id)
 
@@ -67,7 +71,9 @@ def resolve_assistant_chain(
     return resolved
 
 
-def merge_metadata(chain: list[str]) -> dict[str, Any]:
+def merge_metadata(
+    chain: list[str],
+) -> dict[str, Any]:
     """
     Merge metadata from parent assistants into the child assistant.
 
@@ -83,7 +89,9 @@ def merge_metadata(chain: list[str]) -> dict[str, Any]:
         metadata = load_assistant(current_id)
 
         if not metadata:
-            raise ValueError(f"Assistant not found: {current_id}")
+            raise ValueError(
+                f"Assistant not found: {current_id}"
+            )
 
         for key, value in metadata.items():
             if key == "path":
@@ -95,7 +103,11 @@ def merge_metadata(chain: list[str]) -> dict[str, Any]:
                 if not isinstance(existing, list):
                     existing = []
 
-                merged[key] = list(dict.fromkeys(existing + deepcopy(value)))
+                merged[key] = list(
+                    dict.fromkeys(
+                        existing + deepcopy(value)
+                    )
+                )
             else:
                 merged[key] = deepcopy(value)
 
@@ -107,9 +119,12 @@ def merge_metadata(chain: list[str]) -> dict[str, Any]:
     return merged
 
 
-def load_resolved_assistant(assistant_id: str) -> dict[str, Any]:
+def load_resolved_assistant(
+    assistant_id: str,
+) -> dict[str, Any]:
     """
-    Load an assistant and resolve inherited metadata and prompt sections.
+    Load an assistant and resolve inherited metadata,
+    prompt sections, and the final rendered prompt.
     """
     chain = resolve_assistant_chain(assistant_id)
     metadata = merge_metadata(chain)
@@ -117,7 +132,9 @@ def load_resolved_assistant(assistant_id: str) -> dict[str, Any]:
     sections: list[dict[str, str]] = []
 
     for current_id in chain:
-        assistant_path = Path("assistants") / current_id
+        assistant_path = (
+            Path("assistants") / current_id
+        )
 
         for filename in PROMPT_FILES:
             file_path = assistant_path / filename
@@ -125,7 +142,9 @@ def load_resolved_assistant(assistant_id: str) -> dict[str, Any]:
             if not file_path.exists():
                 continue
 
-            content = file_path.read_text(encoding="utf-8").strip()
+            content = file_path.read_text(
+                encoding="utf-8"
+            ).strip()
 
             if not content:
                 continue
@@ -138,9 +157,15 @@ def load_resolved_assistant(assistant_id: str) -> dict[str, Any]:
                 }
             )
 
+    prompt = "\n\n".join(
+        section["content"]
+        for section in sections
+    )
+
     return {
         "id": assistant_id,
         "metadata": metadata,
         "chain": chain,
         "sections": sections,
+        "prompt": prompt,
     }

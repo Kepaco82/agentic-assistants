@@ -97,6 +97,7 @@ def build_registry() -> dict[str, dict[str, Any]]:
             "metadata": resolved["metadata"],
             "chain": resolved["chain"],
             "sections": resolved["sections"],
+            "prompt": resolved["prompt"],
             "path": assistant.get("path"),
         }
 
