@@ -10,4 +10,7 @@ description: Product strategy, roadmap planning, discovery, prioritization, and 
 
 owner: Agentic Assistants
 
+extends:
+  - executive
+
 entrypoint: README.md

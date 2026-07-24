@@ -1,17 +1,6 @@
 import sys
-from pathlib import Path
 
-from assistant_registry import load_assistant
-
-
-PROMPT_FILES = [
-    "persona.md",
-    "scope.md",
-    "workflow.md",
-    "deliverables.md",
-    "quality.md",
-    "handoffs.md",
-]
+from assistant_loader import load_resolved_assistant
 
 
 def main():
@@ -20,35 +9,26 @@ def main():
         raise SystemExit(1)
 
     assistant_id = sys.argv[1]
-    assistant = load_assistant(assistant_id)
 
-    if not assistant:
-        print(f"Assistant not found: {assistant_id}")
+    try:
+        resolved = load_resolved_assistant(assistant_id)
+    except ValueError as error:
+        print(error)
         raise SystemExit(1)
 
-    assistant_path = Path("assistants") / assistant_id
+    metadata = resolved["metadata"]
 
-    print(f"# {assistant.get('name', assistant_id)}")
+    print(f"# {metadata.get('name', assistant_id)}")
     print()
 
-    description = assistant.get("description")
+    description = metadata.get("description")
 
     if description:
         print(description)
         print()
 
-    for filename in PROMPT_FILES:
-        file_path = assistant_path / filename
-
-        if not file_path.exists():
-            continue
-
-        content = file_path.read_text(encoding="utf-8").strip()
-
-        if not content:
-            continue
-
-        print(content)
+    for section in resolved["sections"]:
+        print(section["content"])
         print()
 
 

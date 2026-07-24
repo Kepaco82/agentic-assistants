@@ -1,11 +1,13 @@
 from pathlib import Path
+from typing import Any
 
 
 ASSISTANTS_DIR = Path("assistants")
 
 
-def parse_simple_yaml(file_path: Path) -> dict[str, str]:
-    metadata: dict[str, str] = {}
+def parse_simple_yaml(file_path: Path) -> dict[str, Any]:
+    metadata: dict[str, Any] = {}
+    current_list_key: str | None = None
 
     for line in file_path.read_text(encoding="utf-8").splitlines():
         stripped = line.strip()
@@ -13,16 +15,28 @@ def parse_simple_yaml(file_path: Path) -> dict[str, str]:
         if not stripped or stripped.startswith("#"):
             continue
 
+        if stripped.startswith("- ") and current_list_key:
+            metadata[current_list_key].append(stripped[2:].strip())
+            continue
+
         if ":" not in stripped:
             continue
 
         key, value = stripped.split(":", 1)
-        metadata[key.strip()] = value.strip()
+        key = key.strip()
+        value = value.strip()
+
+        if value:
+            metadata[key] = value
+            current_list_key = None
+        else:
+            metadata[key] = []
+            current_list_key = key
 
     return metadata
 
 
-def load_assistant(assistant_id: str) -> dict[str, str] | None:
+def load_assistant(assistant_id: str) -> dict[str, Any] | None:
     assistant_path = ASSISTANTS_DIR / assistant_id
     metadata_path = assistant_path / "assistant.yaml"
 
@@ -38,8 +52,8 @@ def load_assistant(assistant_id: str) -> dict[str, str] | None:
     return metadata
 
 
-def list_assistants() -> list[dict[str, str]]:
-    assistants: list[dict[str, str]] = []
+def list_assistants() -> list[dict[str, Any]]:
+    assistants: list[dict[str, Any]] = []
 
     if not ASSISTANTS_DIR.exists():
         return assistants
