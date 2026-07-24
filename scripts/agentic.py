@@ -4,6 +4,7 @@ import sys
 from pathlib import Path
 
 from scripts.generate_docs import main as generate_docs
+from scripts.assistant_router import route_request
 
 SCRIPTS_DIR = Path(__file__).parent
 
@@ -68,6 +69,15 @@ def main():
         help="Keyword to match against assistant metadata.",
     )
 
+    route_parser = subparsers.add_parser(
+        "route",
+        help="Route a request to the best matching assistant.",
+    )
+    route_parser.add_argument(
+        "request",
+        help="The request to classify and route.",
+    )
+
     run_parser = subparsers.add_parser(
         "run",
         help="Assemble an assistant into one complete prompt.",
@@ -116,6 +126,18 @@ def main():
         raise SystemExit(
             run_script("search_assistants.py", [args.query])
         )
+
+    if args.command == "route":
+        result = route_request(args.request)
+
+        if result is None:
+            print("No matching assistant found.")
+            return
+
+        print(f"Assistant: {result['assistant_id']}")
+        print(f"Score: {result['score']}")
+        print(f"Matched terms: {', '.join(result['matched_terms'])}")
+        return
 
     if args.command == "run":
         raise SystemExit(
