@@ -19,3 +19,17 @@ def test_memory_can_be_cleared():
     memory.clear()
 
     assert memory.get_messages() == []
+    
+def test_save_and_load_conversation(tmp_path):
+    memory = ConversationMemory()
+
+    memory.add_message("user", "Hello")
+    memory.add_message("assistant", "Hi!")
+
+    filename = tmp_path / "conversation.json"
+
+    memory.save(filename)
+
+    loaded = ConversationMemory.load(filename)
+
+    assert loaded.get_messages() == memory.get_messages()

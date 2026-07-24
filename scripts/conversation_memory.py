@@ -1,3 +1,6 @@
+import json
+
+
 class ConversationMemory:
     def __init__(self):
         self._messages = []
@@ -15,3 +18,16 @@ class ConversationMemory:
 
     def clear(self):
         self._messages = []
+
+    def save(self, filename):
+        with open(filename, "w", encoding="utf-8") as file:
+            json.dump(self._messages, file)
+
+    @classmethod
+    def load(cls, filename):
+        memory = cls()
+
+        with open(filename, "r", encoding="utf-8") as file:
+            memory._messages = json.load(file)
+
+        return memory
