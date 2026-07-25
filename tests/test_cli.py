@@ -68,3 +68,16 @@ def test_conversations_list_command():
         assert "project-alpha" in result.stdout
     finally:
         conversation_file.unlink(missing_ok=True)
+
+def test_conversations_create_command():
+    conversations_dir = PROJECT_ROOT / "conversations"
+    conversation_file = conversations_dir / "project-alpha.json"
+    conversation_file.unlink(missing_ok=True)
+
+    try:
+        result = run_cli("conversations", "create", "project-alpha")
+
+        assert result.returncode == 0
+        assert conversation_file.exists()
+    finally:
+        conversation_file.unlink(missing_ok=True)

@@ -131,7 +131,15 @@ def main():
         "list",
         help="List saved conversations.",
     )
+    conversations_create_parser = conversations_subparsers.add_parser(
+        "create",
+        help="Create a saved conversation.",
+    )
 
+    conversations_create_parser.add_argument(
+        "name",
+        help="Conversation name.",
+    )
     args = parser.parse_args()
 
     if args.command == "list":
@@ -148,7 +156,7 @@ def main():
         generate_docs()
         return
 
-    if args.command == "create":
+        if args.command == "create":
         raise SystemExit(
             run_script("create_assistant.py", [args.name])
         )
@@ -173,6 +181,10 @@ def main():
                 print(name)
             return
 
+        if args.conversations_command == "create":
+            store.create(args.name)
+            print(f"Created conversation: {args.name}")
+            return
     if args.command == "route":
         result = route_request(args.request)
 
