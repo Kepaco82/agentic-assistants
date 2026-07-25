@@ -3,12 +3,12 @@ import subprocess
 import sys
 from pathlib import Path
 
-from scripts.generate_docs import main as generate_docs
-from scripts.assistant_router import route_request
-from scripts.assistant_orchestrator import orchestrate_request
 from scripts.assistant_executor import execute_request
-from scripts.llm_client import LLMClient
+from scripts.assistant_orchestrator import orchestrate_request
+from scripts.assistant_router import route_request
 from scripts.conversation_store import ConversationStore
+from scripts.generate_docs import main as generate_docs
+from scripts.llm_client import LLMClient
 
 SCRIPTS_DIR = Path(__file__).parent
 
@@ -131,11 +131,11 @@ def main():
         "list",
         help="List saved conversations.",
     )
+
     conversations_create_parser = conversations_subparsers.add_parser(
         "create",
         help="Create a saved conversation.",
     )
-
     conversations_create_parser.add_argument(
         "name",
         help="Conversation name.",
@@ -145,11 +145,20 @@ def main():
         "show",
         help="Show a saved conversation.",
     )
-
     conversations_show_parser.add_argument(
         "name",
         help="Conversation name.",
     )
+
+    conversations_delete_parser = conversations_subparsers.add_parser(
+        "delete",
+        help="Delete a saved conversation.",
+    )
+    conversations_delete_parser.add_argument(
+        "name",
+        help="Conversation name.",
+    )
+
     args = parser.parse_args()
 
     if args.command == "list":
@@ -204,6 +213,11 @@ def main():
 
             return
 
+        if args.conversations_command == "delete":
+            store.delete(args.name)
+            print(f"Deleted conversation: {args.name}")
+            return
+
     if args.command == "route":
         result = route_request(args.request)
 
@@ -233,6 +247,7 @@ def main():
             print(f"- {reason}")
 
         return
+
     if args.command == "execute":
         llm_client = LLMClient()
 
@@ -249,7 +264,7 @@ def main():
         print()
         print(result["final_response"])
         return
-        
+
     if args.command == "run":
         raise SystemExit(
             run_script("run_assistant.py", [args.name])
@@ -265,3 +280,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    
