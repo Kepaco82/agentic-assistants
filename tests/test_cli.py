@@ -123,5 +123,28 @@ def test_conversations_delete_command():
         assert not conversation_file.exists()
     finally:
         conversation_file.unlink(missing_ok=True)
-        
 
+def test_conversations_rename_command():
+    conversations_dir = PROJECT_ROOT / "conversations"
+    old_file = conversations_dir / "project-alpha.json"
+    new_file = conversations_dir / "project-beta.json"
+    conversations_dir.mkdir(exist_ok=True)
+
+    old_file.write_text("[]", encoding="utf-8")
+    new_file.unlink(missing_ok=True)
+
+    try:
+        result = run_cli(
+            "conversations",
+            "rename",
+            "project-alpha",
+            "project-beta",
+        )
+
+        assert result.returncode == 0
+        assert not old_file.exists()
+        assert new_file.exists()
+    finally:
+        old_file.unlink(missing_ok=True)
+        new_file.unlink(missing_ok=True)
+        
