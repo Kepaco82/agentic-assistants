@@ -53,3 +53,18 @@ def test_docs_command():
     assert (PROJECT_ROOT / "docs" / "assistants" / "executive.md").exists()
     assert (PROJECT_ROOT / "docs" / "assistants" / "engineering.md").exists()
     assert (PROJECT_ROOT / "docs" / "assistants" / "product.md").exists()
+
+def test_conversations_list_command():
+    conversations_dir = PROJECT_ROOT / "conversations"
+    conversations_dir.mkdir(exist_ok=True)
+
+    conversation_file = conversations_dir / "project-alpha.json"
+    conversation_file.write_text("[]", encoding="utf-8")
+
+    try:
+        result = run_cli("conversations", "list")
+
+        assert result.returncode == 0
+        assert "project-alpha" in result.stdout
+    finally:
+        conversation_file.unlink(missing_ok=True)
