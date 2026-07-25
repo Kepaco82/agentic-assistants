@@ -156,7 +156,7 @@ def main():
         generate_docs()
         return
 
-        if args.command == "create":
+    if args.command == "create":
         raise SystemExit(
             run_script("create_assistant.py", [args.name])
         )
@@ -185,6 +185,7 @@ def main():
             store.create(args.name)
             print(f"Created conversation: {args.name}")
             return
+
     if args.command == "route":
         result = route_request(args.request)
 
