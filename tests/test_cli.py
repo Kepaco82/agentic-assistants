@@ -104,3 +104,24 @@ def test_conversations_show_command():
         assert "Hello" in result.stdout
     finally:
         conversation_file.unlink(missing_ok=True)
+
+def test_conversations_delete_command():
+    conversations_dir = PROJECT_ROOT / "conversations"
+    conversation_file = conversations_dir / "project-alpha.json"
+    conversations_dir.mkdir(exist_ok=True)
+
+    conversation_file.write_text("[]", encoding="utf-8")
+
+    try:
+        result = run_cli(
+            "conversations",
+            "delete",
+            "project-alpha",
+        )
+
+        assert result.returncode == 0
+        assert not conversation_file.exists()
+    finally:
+        conversation_file.unlink(missing_ok=True)
+        
+

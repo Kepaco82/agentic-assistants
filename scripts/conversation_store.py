@@ -16,6 +16,9 @@ class ConversationStore:
             self.directory / f"{name}.json"
         )
 
+    def delete(self, name):
+        (self.directory / f"{name}.json").unlink()
+
     def list(self):
         return sorted(
             path.stem
