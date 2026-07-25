@@ -8,6 +8,7 @@ from scripts.assistant_router import route_request
 from scripts.assistant_orchestrator import orchestrate_request
 from scripts.assistant_executor import execute_request
 from scripts.llm_client import LLMClient
+from scripts.conversation_store import ConversationStore
 
 SCRIPTS_DIR = Path(__file__).parent
 
@@ -117,6 +118,20 @@ def main():
         help="Assistant folder name, such as executive.",
     )
 
+    conversations_parser = subparsers.add_parser(
+        "conversations",
+        help="Manage saved conversations.",
+    )
+
+    conversations_subparsers = conversations_parser.add_subparsers(
+        dest="conversations_command"
+    )
+
+    conversations_subparsers.add_parser(
+        "list",
+        help="List saved conversations.",
+    )
+
     args = parser.parse_args()
 
     if args.command == "list":
@@ -147,6 +162,16 @@ def main():
         raise SystemExit(
             run_script("search_assistants.py", [args.query])
         )
+
+    if args.command == "conversations":
+        store = ConversationStore(
+            Path("conversations")
+        )
+
+        if args.conversations_command == "list":
+            for name in store.list():
+                print(name)
+            return
 
     if args.command == "route":
         result = route_request(args.request)
