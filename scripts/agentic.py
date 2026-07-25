@@ -140,6 +140,16 @@ def main():
         "name",
         help="Conversation name.",
     )
+
+    conversations_show_parser = conversations_subparsers.add_parser(
+        "show",
+        help="Show a saved conversation.",
+    )
+
+    conversations_show_parser.add_argument(
+        "name",
+        help="Conversation name.",
+    )
     args = parser.parse_args()
 
     if args.command == "list":
@@ -184,6 +194,14 @@ def main():
         if args.conversations_command == "create":
             store.create(args.name)
             print(f"Created conversation: {args.name}")
+            return
+
+        if args.conversations_command == "show":
+            conversation = store.load(args.name)
+
+            for message in conversation.get_messages():
+                print(f"{message['role']}: {message['content']}")
+
             return
 
     if args.command == "route":
