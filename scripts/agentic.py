@@ -158,7 +158,18 @@ def main():
         "name",
         help="Conversation name.",
     )
-
+    conversations_rename_parser = conversations_subparsers.add_parser(
+        "rename",
+        help="Rename a saved conversation.",
+)
+    conversations_rename_parser.add_argument(
+        "old_name",
+        help="Current conversation name.",
+)
+    conversations_rename_parser.add_argument(
+        "new_name",
+        help="New conversation name.",
+)
     args = parser.parse_args()
 
     if args.command == "list":
@@ -216,6 +227,14 @@ def main():
         if args.conversations_command == "delete":
             store.delete(args.name)
             print(f"Deleted conversation: {args.name}")
+            return
+
+        if args.conversations_command == "rename":
+            store.rename(args.old_name, args.new_name)
+            print(
+                 f"Renamed conversation: "
+                 f"{args.old_name} -> {args.new_name}"
+            )
             return
 
     if args.command == "route":

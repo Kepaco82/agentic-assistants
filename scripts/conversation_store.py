@@ -24,3 +24,8 @@ class ConversationStore:
             path.stem
             for path in self.directory.glob("*.json")
         )
+
+    def rename(self, old_name, new_name):
+        old_path = self.directory / f"{old_name}.json"
+        new_path = self.directory / f"{new_name}.json"
+        old_path.rename(new_path)
