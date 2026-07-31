@@ -1,3 +1,5 @@
+import pytest
+
 from scripts.conversation_memory import ConversationMemory
 from scripts.conversation_store import ConversationStore
 
@@ -76,3 +78,24 @@ def test_store_creates_missing_directory(tmp_path):
     store.create("marketing")
 
     assert directory.exists()
+
+def test_rename_missing_conversation_raises_clear_error(tmp_path):
+    store = ConversationStore(tmp_path)
+
+    with pytest.raises(
+        FileNotFoundError,
+        match="Conversation not found: missing",
+    ):
+        store.rename("missing", "renamed")
+
+def test_rename_to_existing_conversation_raises_clear_error(tmp_path):
+    store = ConversationStore(tmp_path)
+
+    store.create("marketing")
+    store.create("sales")
+
+    with pytest.raises(
+        FileExistsError,
+        match="Conversation already exists: sales",
+    ):
+        store.rename("marketing", "sales")
