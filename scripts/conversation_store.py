@@ -28,4 +28,15 @@ class ConversationStore:
     def rename(self, old_name, new_name):
         old_path = self.directory / f"{old_name}.json"
         new_path = self.directory / f"{new_name}.json"
-        old_path.rename(new_path)
+
+        if not old_path.exists():
+            raise FileNotFoundError(
+                f"Conversation not found: {old_name}"
+            )
+
+        if new_path.exists():
+            raise FileExistsError(
+                f"Conversation already exists: {new_name}"
+            )
+
+        old_path.rename(new_path)    
