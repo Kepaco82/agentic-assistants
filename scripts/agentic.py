@@ -7,6 +7,7 @@ from scripts.assistant_executor import execute_request
 from scripts.assistant_orchestrator import orchestrate_request
 from scripts.assistant_router import route_request
 from scripts.conversation_store import ConversationStore
+from scripts.conversation_service import ConversationService
 from scripts.generate_docs import main as generate_docs
 from scripts.llm_client import LLMClient
 
@@ -206,18 +207,20 @@ def main():
             Path("conversations")
         )
 
+        service = ConversationService(store)
+
         if args.conversations_command == "list":
-            for name in store.list():
+            for name in service.list_conversations():
                 print(name)
             return
 
         if args.conversations_command == "create":
-            store.create(args.name)
+            service.create_conversation(args.name)
             print(f"Created conversation: {args.name}")
             return
 
         if args.conversations_command == "show":
-            conversation = store.load(args.name)
+            conversation = service.load_conversation(args.name)
 
             for message in conversation.get_messages():
                 print(f"{message['role']}: {message['content']}")
@@ -225,12 +228,15 @@ def main():
             return
 
         if args.conversations_command == "delete":
-            store.delete(args.name)
+            service.delete_conversation(args.name)
             print(f"Deleted conversation: {args.name}")
             return
 
         if args.conversations_command == "rename":
-            store.rename(args.old_name, args.new_name)
+            service.rename_conversation(
+                args.old_name,
+                args.new_name
+            )
             print(
                  f"Renamed conversation: "
                  f"{args.old_name} -> {args.new_name}"
