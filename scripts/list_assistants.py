@@ -1,8 +1,11 @@
-from assistant_registry import list_assistants
+import assistant_registry
+
+from assistant_service import AssistantService
 
 
 def main():
-    assistants = list_assistants()
+    service = AssistantService(assistant_registry)
+    assistants = service.list_assistants()
 
     print("Available Assistants")
     print("====================")
