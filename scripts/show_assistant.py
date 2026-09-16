@@ -1,7 +1,9 @@
 import sys
 from typing import Any
 
-from assistant_loader import load_resolved_assistant
+import assistant_loader
+
+from assistant_service import AssistantService
 
 
 LIST_FIELDS = [
@@ -36,7 +38,8 @@ def main() -> None:
     assistant_name = sys.argv[1]
 
     try:
-        resolved = load_resolved_assistant(assistant_name)
+        service = AssistantService(assistant_loader)
+        resolved = service.get_resolved_assistant(assistant_name)
     except ValueError as error:
         print(f"Error: {error}")
         raise SystemExit(1)
