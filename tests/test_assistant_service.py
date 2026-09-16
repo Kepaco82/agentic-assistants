@@ -37,3 +37,27 @@ def test_service_gets_assistant():
         "assistant_id": "executive",
         "name": "Executive Assistant",
     }
+
+def test_service_gets_resolved_assistant():
+    class FakeLoader:
+        def load_resolved_assistant(self, assistant_id):
+            return {
+                "metadata": {
+                    "id": assistant_id,
+                    "name": "Executive Assistant",
+                },
+                "chain": ["base", assistant_id],
+            }
+
+    loader = FakeLoader()
+    service = AssistantService(loader)
+
+    assistant = service.get_resolved_assistant("executive")
+
+    assert assistant == {
+        "metadata": {
+            "id": "executive",
+            "name": "Executive Assistant",
+        },
+        "chain": ["base", "executive"],
+    }
